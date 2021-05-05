@@ -11,7 +11,7 @@ Java 11 (Стандартная библиотека Java 11).
 Запустите файл wordStatFromURL.jar одним из 2х вариантов:
 1.	С указанием директории для сохранения. -Dfile.encoding=UTF-8 -jar wordStatFromURL.jar  «HTML-страница» «Директория»
 Пример:
-java -Dfile.encoding=UTF-8 -jar wordStatFromURL.jar  https://www.simbirsoft.com D:\\downloads1
+> java -Dfile.encoding=UTF-8 -jar wordStatFromURL.jar  https://www.simbirsoft.com D:\\downloads1
 2.	Без указания директории сохранения, директория в этом случае по умолчанию D:\\downloads.
 Пример: 
-java -Dfile.encoding=UTF-8 -jar wordStatFromURL.jar  https://www.simbirsoft.com
+> java -Dfile.encoding=UTF-8 -jar wordStatFromURL.jar  https://www.simbirsoft.com
