@@ -16,7 +16,6 @@ public class ProgrammExecutionApp {
         try {
 
             String delimeter = "[^A-Za-zА-Яа-я]+";
-//            String urlPath = "https://www.simbirsoft.com";
             String fileResoultName = "resoult.txt";
             String fileHtmlPageName = "htmlPage.html";
             String fileDirectory = "D:\\downloads";
