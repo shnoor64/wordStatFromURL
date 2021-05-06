@@ -16,7 +16,7 @@ public class ProgrammExecutionApp {
         try {
 
             String delimeter = "[^A-Za-zА-Яа-я]+";
-            String fileResoultName = "resoult.txt";
+            String fileResoultName = "result.txt";
             String fileHtmlPageName = "htmlPage.html";
             String fileDirectory = "D:\\downloads";
 
