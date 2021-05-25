@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="wordStatFromURL">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/wordStatFromURL.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

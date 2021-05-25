@@ -9,10 +9,7 @@ import javax.swing.text.html.HTMLEditorKit.ParserCallback;
 import javax.swing.text.html.HTML.Tag;
 import javax.swing.text.MutableAttributeSet;
 
-public class ParsHtml {
-
-    private ParsHtml() {
-    }
+class ParsHtml {
 
     public static List<String> extractText(Reader reader) throws IOException {
 
@@ -47,7 +44,7 @@ public class ParsHtml {
         };
         parserDelegator.parse(reader, parserCallback, true);
         return list;
-
     }
+    
 
 }
