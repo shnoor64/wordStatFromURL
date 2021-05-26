@@ -31,26 +31,25 @@ public class OutputOfStatistics {
 
     public void executingOfStatisticsOutput() throws IOException {
         try {
-
+            //подумал, это лишний класс, можно сделать метод private void validate() который будет проверять эти все поля.
+            //validate надо будет вызвать в конструкторе при инициализации класса.
+            //там же в конструкторе проинициализировать все остальные поля и ulrPath (его сначала проверить в validate что это правильная ссылка)
             CheckingEnteredData cED = new CheckingEnteredData(args, fileDirectory);
-            cED.checkingLenthData(); //это я бы перенес в конструктор, при создании экземпляра OutputOfStatistics
-            //перед инитом полей проверяем их на корректность. Раз нам надо в приложении дальше использовать new CheckingEnteredData
-            //то под него отдельное поле завести в классе (OutputOfStatistics). Еще опять же название класса предлагаю назвать InputDataValidator
+            cED.checkingLenthData();
 
             String urlPath = cED.getUrlPath();
             ReadHtml rH /*название переменной я бы не сокращал, хотя бы reader*/ = new ReadHtml(); //название класса надо поменять он HtmlSaver() так как читает а сохраняет страницу.
-            //я бы сделал вот так new HtmlSaver(urlPath, cED.getFileDirectory(), fileHtmlPageName) и у HtmlSaver() сделать метод save() который будет возвращать File...тогда тебе не понадобится
+            //я бы сделал вот так new HtmlSaver(urlPath, FileDirectory, fileHtmlPageName) и у HtmlSaver() сделать метод save() который будет возвращать File...тогда тебе не понадобится
             //вот это File fileResoult = new File(cED.getFileDirectory() + File.separator + fileResoultName); у тебя сразу будет File savedFile = new HtmlSaver(urlPath, cED.getFileDirectory(), fileHtmlPageName).save();
             rH.saveHtml(urlPath, cED.getFileDirectory(), fileHtmlPageName);
-            File fileResoult = new File(cED.getFileDirectory() + File.separator + fileResoultName); //лучше сделать как написал на 44 .под cED.getFileDirectory() + File.separator + fileResoultName
-            // под это у тебя будет отдельный класс PathBuilder() (см комменты в CheckingEnteredData) где будет метод buildResultPath(), например, который вернет тебе путь сконкатенированный
-            FileWriter fileResoultWrit/*ошибка result, зажал пару букв Writer =)*/ = new FileWriter(fileResoult); //нужно использовать autoclosable те try (FileWriter fileResultWrit = new FileWriter(fileResoult))
+            //следующая строка тебе не понадобится если WriterHtml вернет сразу файл, но если все таки решишь использовать как есть то FileWriter надо использовать с автозакрытием ресурсов
+            File fileResoult = new File(cED.getFileDirectory() + File.separator + fileResoultName);
+            FileWriter fileResoultWrit/*ошибка result, зажал пару букв Writer =)*/ = new FileWriter(fileResoult);
 
             StatisticWord stW /*не сокращай statisticService норм будет */ = new StatisticWord(); //название класса, StatisticService, давай при создании класса в него положим сразу файл с которым он будет работать new StatisticService(File file /*из строки 43*/);
             //у StatisticService давай сделаем метод calculate() который будет возращать Map<String, Integer>, это мап с результатом.
             //у тебя получится
-            PathBuilder pathBuilder = new PathBuilder(fileResoultName, fileHtmlPageName, fileDirectory//мб еще что что бы построить путь);
-            File savedHtmlPage = new HtmlSaver(pathBuilder.buildResultPath()).save();
+            File savedHtmlPage = new HtmlSaver(...).save();
             StaisticService staisticService = new StaisticService(savedHtmlPage, delimeter);
             Map<String, Integer> calculatedResult = staisticService.calculate();
 
