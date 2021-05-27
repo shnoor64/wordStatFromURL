@@ -21,3 +21,15 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+#В гите не должно быть конфигов идеи скомпилированных классов
+# необходимо исключить на первый взгляд
+# папки:
+#   build
+#   nbproject
+#   wordStatFromURL.iml
+#   .idea
+#
+#   точно не знаю нужен ли manifest и build.xml
+#  По идее не нужен и dist для этого есть функционал релизинга на гитхабе https://docs.github.com/en/github/administering-a-repository/releasing-projects-on-github/managing-releases-in-a-repository#:~:text=Editing%20a%20release-,On%20GitHub%2C%20navigate%20to%20the%20main%20page%20of%20the%20repository,form%2C%20then%20click%20Update%20release
+# не знаю на сколько это критично в рамках тестового проекта.

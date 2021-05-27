@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+//считаю что лишний класс, можно сделать в приватном методе в OutputOfStatistics
 public class CheckingEnteredData {
 
     public CheckingEnteredData(String[] arrayEnteredData, String fileDirectory) {
@@ -17,8 +18,10 @@ public class CheckingEnteredData {
     private String fileDirectory;
 
     public void checkingLenthData() throws IOException {
-        try {
+        //тут try не нужен, ты выкидываешь и так на верх исключение
             if ((arrayEnteredData.length == 0) || (arrayEnteredData.length > 2)) {
+                //не уверен что подходит тип исключения, IOE это ошибки чтения, записи куда то.
+                // в данном случае IllegalArgumentException подходит из встроенных
                 throw new IOException("Неверно указано количество аргументов");
             } else if (arrayEnteredData.length == 1) {
                 urlPath = arrayEnteredData[0];
@@ -28,9 +31,7 @@ public class CheckingEnteredData {
                 urlPath = arrayEnteredData[0];
                 LOG.log(Level.INFO, "Выбрана директория файлов: " + fileDirectory);
             }
-        } catch (IOException ex) {
-            throw ex;
-        }
+
 
     }
 
