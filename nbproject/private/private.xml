@@ -4,8 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/asutp/Documents/NetBeansProjects/wordStatFromURL/src/wordstatfromurl/WordStatFromURLApplication.java</file>
+            <file>file:/C:/Users/asutp/Documents/NetBeansProjects/wordStatFromURL/src/wordstatfromurl/HtmlParser.java</file>
             <file>file:/C:/Users/asutp/Documents/NetBeansProjects/wordStatFromURL/src/wordstatfromurl/CheckingEnteredData.java</file>
             <file>file:/C:/Users/asutp/Documents/NetBeansProjects/wordStatFromURL/src/wordstatfromurl/OutputOfStatistics.java</file>
+            <file>file:/C:/Users/asutp/Documents/NetBeansProjects/wordStatFromURL/src/wordstatfromurl/StatisticWord.java</file>
+            <file>file:/C:/Users/asutp/Documents/NetBeansProjects/wordStatFromURL/src/wordstatfromurl/HtmlSaver.java</file>
         </group>
     </open-files>
 </project-private>

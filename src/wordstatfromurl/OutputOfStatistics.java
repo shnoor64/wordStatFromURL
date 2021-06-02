@@ -9,6 +9,14 @@ import java.util.logging.Logger;
 
 public class OutputOfStatistics {
 
+    private static final String delimeter = "[^A-Za-zА-Яа-я]+";
+    private static final Logger LOG = Logger.getLogger(OutputOfStatistics.class.getName());
+
+    private final String[] args;
+    private final String fileResoultName;
+    private final String fileHtmlPageName;
+    private final String fileDirectory;
+
     public OutputOfStatistics(String[] args, String fileResoultName, String fileHtmlPageName, String fileDirectory) {
         this.args = args;
         this.fileResoultName = fileResoultName;
@@ -16,32 +24,24 @@ public class OutputOfStatistics {
         this.fileDirectory = fileDirectory;
     }
 
-    private static final Logger LOG = Logger.getLogger(OutputOfStatistics.class.getName());
-
-    private static String delimeter = "[^A-Za-zА-Яа-я]+";
-    private static String fileResoultName;
-    private static String fileHtmlPageName;
-    private String fileDirectory;
-    private static String[] args;
-
     public void executingOfStatisticsOutput() throws IOException {
         try {
 
-            CheckingEnteredData cED = new CheckingEnteredData(args, fileDirectory);
-            cED.checkingLenthData();
+            CheckingEnteredData checkEntreryData = new CheckingEnteredData(args, fileDirectory);
+            checkEntreryData.checkingLenthData();
 
-            String urlPath = cED.getUrlPath();
-            ReadHtml rH = new ReadHtml();
-            rH.saveHtml(urlPath, cED.getFileDirectory(), fileHtmlPageName);
-            File fileResoult = new File(cED.getFileDirectory() + File.separator + fileResoultName);
+            String urlPath = checkEntreryData.getUrlPath();
+            HtmlSaver htmlSaver = new HtmlSaver();
+            htmlSaver.saveHtml(urlPath, checkEntreryData.getFileDirectory(), fileHtmlPageName);
+            File fileResoult = new File(checkEntreryData.getFileDirectory() + File.separator + fileResoultName);
             FileWriter fileResoultWrit = new FileWriter(fileResoult);
 
-            StatisticWord stW = new StatisticWord();
-            stW.statWordFromFile((cED.getFileDirectory() + File.separator + fileHtmlPageName), delimeter);
-            for (Map.Entry<String, Integer> entry : stW.getMap().entrySet()) {
+            StatisticWord statWord = new StatisticWord();
+            statWord.statWordFromFile((checkEntreryData.getFileDirectory() + File.separator + fileHtmlPageName), delimeter);
+            for (Map.Entry<String, Integer> entry : statWord.getMapUniqueWords().entrySet()) {
                 System.out.println(entry.getKey() + " - " + entry.getValue());
             }
-            fileResoultWrit.write(stW.getMap().toString());
+            fileResoultWrit.write(statWord.getMapUniqueWords().toString());
             fileResoultWrit.close();
             LOG.log(Level.INFO, "Программа завершена успешно");
         } catch (IOException ex) {

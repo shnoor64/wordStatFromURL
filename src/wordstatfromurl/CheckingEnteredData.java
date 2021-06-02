@@ -6,20 +6,20 @@ import java.util.logging.Logger;
 
 public class CheckingEnteredData {
 
+    private String[] arrayEnteredData;
+    private String urlPath;
+    private String fileDirectory;
+    private static final Logger LOG = Logger.getLogger(CheckingEnteredData.class.getName());
+
     public CheckingEnteredData(String[] arrayEnteredData, String fileDirectory) {
         this.arrayEnteredData = arrayEnteredData;
         this.fileDirectory = fileDirectory;
     }
-    private static final Logger LOG = Logger.getLogger(CheckingEnteredData.class.getName());
-
-    private String[] arrayEnteredData;
-    private String urlPath;
-    private String fileDirectory;
 
     public void checkingLenthData() throws IOException {
-        try {
+   
             if ((arrayEnteredData.length == 0) || (arrayEnteredData.length > 2)) {
-                throw new IOException("Неверно указано количество аргументов");
+                throw new IllegalArgumentException("Неверно указано количество аргументов");
             } else if (arrayEnteredData.length == 1) {
                 urlPath = arrayEnteredData[0];
                 LOG.log(Level.INFO, "Выбрана директория файлов по умолчанию: " + fileDirectory);
@@ -28,9 +28,7 @@ public class CheckingEnteredData {
                 urlPath = arrayEnteredData[0];
                 LOG.log(Level.INFO, "Выбрана директория файлов: " + fileDirectory);
             }
-        } catch (IOException ex) {
-            throw ex;
-        }
+      
 
     }
 

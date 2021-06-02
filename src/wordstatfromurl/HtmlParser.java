@@ -9,7 +9,7 @@ import javax.swing.text.html.HTMLEditorKit.ParserCallback;
 import javax.swing.text.html.HTML.Tag;
 import javax.swing.text.MutableAttributeSet;
 
-class ParsHtml {
+class HtmlParser {
 
     public static List<String> extractText(Reader reader) throws IOException {
 

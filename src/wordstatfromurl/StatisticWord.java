@@ -10,9 +10,10 @@ public class StatisticWord {
 
     private Map<String, Integer> mapUniqueWords = new HashMap<>();
 
-    public void statWordFromFile(String filePath, String delimeter) throws IOException {
+    public Map <String, Integer> statWordFromFile(String filePath, String delimeter) throws IOException {
+
         try (FileReader reader = new FileReader(filePath)) {
-            List<String> lines = ParsHtml.extractText(reader);
+            List<String> lines = HtmlParser.extractText(reader);
             for (String line : lines) {
                 String[] bufferLine;
                 bufferLine = line.strip().split(delimeter);
@@ -29,12 +30,13 @@ public class StatisticWord {
                     }
                 }
             }
+            return mapUniqueWords;
         } catch (IOException ex) {
             throw ex;
         }
     }
 
-    public Map<String, Integer> getMap() {
+    public Map<String, Integer> getMapUniqueWords() {
         return mapUniqueWords;
     }
 }

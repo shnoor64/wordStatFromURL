@@ -4,7 +4,7 @@ import java.net.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-public class ReadHtml {
+public class HtmlSaver {
 
     public void saveHtml(String urlPath, String fileDirectory, String fileName) throws IOException {
         URL url = new URL(urlPath);
